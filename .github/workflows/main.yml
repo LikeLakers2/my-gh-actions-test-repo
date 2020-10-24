@@ -22,7 +22,7 @@ jobs:
       - name: Get current date
         id: date
         run: |
-          echo "::set-output name=date::$(date +'%Y-%m-%d')";
+          echo "::set-output name=date::$(date +'%Y.%m.%d')";
           echo "$(date +'%Y.%m.%d')";
       - name: Create Release
         id: create_release
@@ -30,8 +30,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: release-${{ github.run_id }}
-          release_name: ${{ github.sha }}
+          tag_name: ${{ steps.date.outputs.date }}
+          release_name: v${{ steps.date.outputs.date }}
           draft: false
           prerelease: false
       - name: Upload Release Asset
