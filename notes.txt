@@ -1,0 +1,2 @@
+workflow_run:
+	Runs once for each of the `on.workflow_run.workflows`, not just once after all

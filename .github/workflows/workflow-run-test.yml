@@ -1,15 +1,29 @@
 name: workflow-run-test
 
 on:
-  workflow_run:
-    workflows: ["workflow-run-dependency-1", "workflow-run-dependency-2", "workflow-run-dependency-3"]
-    branches: [main]
-    types:
-      - completed
+  push
 
 jobs:
   build:
     runs-on: ubuntu-18.04
     steps:
-        - name: Run1
-          run: echo four
+      - name: Wait for dependency 1 to finish
+        uses: fountainhead/action-wait-for-check@v1.0.0
+        id: wait-for-dep1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          checkName: workflow-run-dependency-1
+      - name: Wait for dependency 2 to finish
+        uses: fountainhead/action-wait-for-check@v1.0.0
+        id: wait-for-dep2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          checkName: workflow-run-dependency-2
+      - name: Wait for dependency 3 to finish
+        uses: fountainhead/action-wait-for-check@v1.0.0
+        id: wait-for-dep3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          checkName: workflow-run-dependency-3
+      - name: Run1
+        run: echo four
