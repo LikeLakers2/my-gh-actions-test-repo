@@ -12,18 +12,21 @@ jobs:
         id: wait-for-dep1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          checkName: workflow-run-dependency-1
+          checkName: dep-1
+          
       - name: Wait for dependency 2 to finish
         uses: fountainhead/action-wait-for-check@v1.0.0
         id: wait-for-dep2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          checkName: workflow-run-dependency-2
+          checkName: dep-2
+
       - name: Wait for dependency 3 to finish
         uses: fountainhead/action-wait-for-check@v1.0.0
         id: wait-for-dep3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          checkName: workflow-run-dependency-3
+          checkName: dep-3
+
       - name: Run1
         run: echo four

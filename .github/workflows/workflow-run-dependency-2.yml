@@ -4,8 +4,13 @@ on:
   push
 
 jobs:
-  build:
+  dep-2:
     runs-on: ubuntu-18.04
     steps:
       - name: Second
         run: echo Second
+  dep-3:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Third
+        run: echo Third
