@@ -2,4 +2,5 @@ workflow_run:
 	Runs once for each of the `on.workflow_run.workflows`, not just once after all
 	Can use `fountainhead/action-wait-for-check` to wait for checks to finish first
 		Each job, even if multiple are specified in a file, uses its job_id as the checkName
-		
+		So you can have both the waiting and the dependencies in the same workflow file
+		See https://github.com/LikeLakers2/my-gh-actions-test-repo/actions/runs/328088583
