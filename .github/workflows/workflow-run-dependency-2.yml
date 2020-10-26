@@ -1,0 +1,11 @@
+name: workflow-run-dependency-2
+
+on:
+  push
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Second
+        run: echo Second

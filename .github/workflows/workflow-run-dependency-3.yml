@@ -1,0 +1,11 @@
+name: workflow-run-dependency-3
+
+on:
+  push
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Third
+        run: echo Third

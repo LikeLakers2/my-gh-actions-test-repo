@@ -1,0 +1,15 @@
+name: workflow-run-test
+
+on:
+  workflow_run:
+    workflows: ["workflow-run-dependency-1", "workflow-run-dependency-2", "workflow-run-dependency-3"]
+    branches: [main]
+    types:
+      - completed
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+        - name: Run1
+          run: echo four
